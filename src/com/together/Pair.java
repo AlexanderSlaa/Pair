@@ -1,5 +1,6 @@
-package Pair;
+package com.together;
 
+import java.util.ArrayList;
 import java.util.function.BiConsumer;
 
 public class Pair<K,V>{
@@ -38,6 +39,17 @@ public class Pair<K,V>{
             return new Pair<>(pairArray[0], pairArray[1]);
         }
         return null;
+    }
+
+    public static <K,V> ArrayList<Pair<K, V>> combine(K[] keys, V[] values) throws Exception {
+        if(keys.length != values.length){
+            throw new Exception("Incompatible array length can't combine arrays");
+        }
+        ArrayList<Pair<K,V>> pairs = new ArrayList<>();
+        for (int i = 0; i < keys.length; i++) {
+            pairs.add(new Pair<>(keys[i], values[i]));
+        }
+        return pairs;
     }
 
     @Override
