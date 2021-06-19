@@ -13,6 +13,8 @@ public class Pair<K,V>{
         this.value = value;
     }
 
+    public Pair(){}
+
     public K getKey() {
         return key;
     }
@@ -28,6 +30,12 @@ public class Pair<K,V>{
     public void setValue(V value) {
         this.value = value;
     }
+
+    public void setKeyValue(Object[] keyValue){
+        setKey((K) keyValue[0]);
+        setValue((V) keyValue[1]);
+    }
+
 
     public void relocate(BiConsumer<K,V> biConsumer){
         biConsumer.accept(getKey(), getValue());
